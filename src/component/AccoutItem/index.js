@@ -10,7 +10,7 @@ function AccountItem() {
     <div className={cx("wrapper")}>
       <img
         className={cx("avatar")}
-        src="https://static.bongda24h.vn/medias/standard/2021/9/5/211443-2.jpg"
+        src="https://raw.githubusercontent.com/Canduy/tiktok/34e2751a527441c6ccd5ae259903d494997a6cb1/src/assets/image/avatar.jpg"
         alt="Hoaa"
       />
       <div className={cx("info")}>
@@ -18,7 +18,7 @@ function AccountItem() {
           <span>Phil Foden 47</span>
           <FontAwesomeIcon className={cx("check")} icon={faCheckCircle} />
         </h4>
-        <span className={cx("username")}>Man City</span>
+        <span className={cx("username")}>Phil Fodeny</span>
       </div>
     </div>
   );

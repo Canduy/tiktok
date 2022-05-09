@@ -12,13 +12,14 @@ import { Wrapper as PopperWrapper } from "~/component/Popper";
 import image from "~/assets/image";
 import styles from "./Header.module.scss";
 import AccountItem from "~/component/AccoutItem";
+import Button from "~/component/Button";
 const cx = classNames.bind(styles);
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
-      setSearchResult([1]);
+      setSearchResult([]);
     }, 0);
   }, []);
   return (
@@ -57,7 +58,12 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx("actions")}></div>
+        <div className={cx("actions")}>
+          <Button text>Upload</Button>
+          <Button primary rightIcon={<FontAwesomeIcon icon={faSearch} />}>
+            Log in
+          </Button>
+        </div>
       </div>
     </header>
   );
