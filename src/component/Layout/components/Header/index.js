@@ -1,30 +1,25 @@
-import { useEffect, useState } from "react";
-import classNames from "classnames/bind";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleQuestion,
-  faCircleXmark,
-  faCloudUpload,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGear,
   faKeyboard,
-  faSearch,
   faSignOut,
-  faSpinner,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react";
-import HeadlessTippy from "@tippyjs/react/headless";
+import classNames from "classnames/bind";
 import "tippy.js/dist/tippy.css";
 
-import { Wrapper as PopperWrapper } from "~/component/Popper";
 import image from "~/assets/image";
-import styles from "./Header.module.scss";
-import AccountItem from "~/component/AccoutItem";
 import Button from "~/component/Button";
+import { InboxIcon, MessageIcon, UploadIcon } from "~/component/Icon";
+import Image from "~/component/Image";
 import Menu from "~/component/Popper/Menu";
+import Search from "../Search";
+import styles from "./Header.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -59,13 +54,8 @@ const MENU_ITEMS = [
   },
 ];
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
   const currentUser = true;
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
+
   const handleChange = (menuItem) => {
     switch (menuItem.type) {
       case "language":
@@ -104,42 +94,26 @@ function Header() {
         <div className={cx("logo")}>
           <img src={image.logo} alt="Tiktok" />
         </div>
-        <HeadlessTippy
-          interactive
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx("search-title")}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx("search")}>
-            <input
-              placeholder="Search accounts and videos"
-              spellCheck={false}
-            />
-            <button className={cx("clear")}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
-
-            <button className={cx("search-btn")}>
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </div>
-        </HeadlessTippy>
+        {/* search */}
+        <Search />
         <div className={cx("actions")}>
           {currentUser ? (
             <>
-              <Tippy content="upload video" placement="bottom" delay={[0, 300]}>
+              <Tippy content="upload video" placement="bottom" delay={[0, 50]}>
                 <button className={cx("action-btn")}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  {/* <FontAwesomeIcon icon={faCloudUpload} /> */}
+                  <UploadIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <MessageIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                <button className={cx("action-btn")}>
+                  <InboxIcon />
+                  <span className={cx("badge")}>12</span>
                 </button>
               </Tippy>
             </>
@@ -154,7 +128,7 @@ function Header() {
             onChange={handleChange}
           >
             {currentUser ? (
-              <img
+              <Image
                 className={cx("user-avatar")}
                 src="https://raw.githubusercontent.com/Canduy/tiktok/34e2751a527441c6ccd5ae259903d494997a6cb1/src/assets/image/avatar.jpg"
                 alt="Nguyen Thi Huyen"

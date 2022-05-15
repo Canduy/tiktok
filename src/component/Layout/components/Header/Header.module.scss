@@ -18,84 +18,41 @@
   justify-content: space-between;
 }
 
-.search-result,
-.search {
-  width: 361px;
-}
-
-.search {
-  height: 46px;
-  background-color: rgba(22, 24, 35, 0.06);
-  border-radius: var(--search-boder-radius);
-  padding-left: 16px;
-  display: flex;
-  position: relative;
-  border: 1.5px solid transparent;
-
-  input {
-    flex: 1;
-    color: var(--black);
-    font-size: 1.6rem;
-    background-color: transparent;
-    padding: 12px 0;
-    caret-color: var(--primary);
-  }
-
-  input:not(:placeholder-shown) ~ .search-btn {
-    color: rgba(22, 24, 35, 0.75);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 52px;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 28px;
-    background-color: rgba(22, 24, 35, 0.12);
-  }
-
-  &:focus-within {
-    border-color: rgba(22, 24, 35, 0.2);
-  }
-}
-
-.search-title {
-  padding: 5px 12px;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: rgba(22, 24, 35, 0.5);
-}
-
-.clear,
-.loading {
-  position: absolute;
-  right: calc(var(--search-btn-width) + 16px);
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(22, 24, 35, 0.34);
-}
-.search-btn {
-  width: var(--search-btn-width);
-  height: 100%;
-  border-top-right-radius: var(--search-boder-radius);
-  border-bottom-right-radius: var(--search-boder-radius);
-  font-size: 1.8rem;
-  color: rgba(22, 24, 35, 0.15);
-
-  &:hover {
-    background-color: rgba(22, 24, 35, 0.03);
-    cursor: pointer;
-  }
-  &:active {
-    background-color: rgba(22, 24, 35, 0.06);
-  }
-}
 // Actions
 .actions {
   display: flex;
   align-items: center;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 2.2rem;
+  color: #161823;
+  background-color: transparent;
+}
+
+.action-btn {
+  position: relative;
+  display: flex;
+  font-size: 2.2rem;
+  color: #161823;
+  background-color: transparent;
+  padding: 4px 12px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -3px;
+  right: 0px;
+  padding: 0px 6px;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: "ProximaNova", sans-serif;
+  background-color: var(--primary);
 }
 
 .more-btn {
