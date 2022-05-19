@@ -1,6 +1,7 @@
 import HeaderOnly from "~/component/Layout/HeaderOnly";
 import Following from "~/pages/Follwing";
 import Home from "~/pages/Home";
+import Profile from "~/pages/Profile";
 import Upload from "~/pages/Upload";
 
 const publicRoutes = [
@@ -11,6 +12,10 @@ const publicRoutes = [
   {
     path: "/following",
     component: Following,
+  },
+  {
+    path: "/@:nickname",
+    component: Profile,
   },
   {
     path: "/upload",
