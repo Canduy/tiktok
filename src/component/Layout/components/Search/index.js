@@ -8,6 +8,7 @@ import AccountItem from "~/component/AccoutItem";
 import { SearchIcon } from "~/component/Icon";
 import { Wrapper as PopperWrapper } from "~/component/Popper";
 import { useDebouce } from "~/hooks";
+import * as searchServices from "~/apiServices/searchServices";
 import styles from "./Search.module.scss";
 const cx = classNames.bind(styles);
 function Search() {
@@ -24,17 +25,16 @@ function Search() {
       setSearchResult([]);
       return;
     }
-    setLoading(true);
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debouced
-      )}&type=less`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      });
+
+    const fetchApi = async () => {
+      setLoading(true);
+
+      const result = await searchServices.search(debouced);
+
+      setSearchResult(result);
+      setLoading(false);
+    };
+    fetchApi();
   }, [debouced]);
 
   const handleClear = () => {
