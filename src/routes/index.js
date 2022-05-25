@@ -1,4 +1,5 @@
 import HeaderOnly from "~/component/Layout/HeaderOnly";
+import routes from "~/config/route.";
 import Following from "~/pages/Follwing";
 import Home from "~/pages/Home";
 import Profile from "~/pages/Profile";
@@ -6,19 +7,19 @@ import Upload from "~/pages/Upload";
 
 const publicRoutes = [
   {
-    path: "/",
+    path: routes.home,
     component: Home,
   },
   {
-    path: "/following",
+    path: routes.following,
     component: Following,
   },
   {
-    path: "/@:nickname",
+    path: routes.profile,
     component: Profile,
   },
   {
-    path: "/upload",
+    path: routes.upload,
     component: Upload,
     layout: HeaderOnly,
   },
