@@ -19,7 +19,7 @@ import Button from "~/component/Button";
 import { InboxIcon, MessageIcon, UploadIcon } from "~/component/Icon";
 import Image from "~/component/Image";
 import Menu from "~/component/Popper/Menu";
-import routes from "~/config/route.";
+import config from "~/config";
 import Search from "../Search";
 import styles from "./Header.module.scss";
 
@@ -94,7 +94,7 @@ function Header() {
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
         <div className={cx("logo")}>
-          <Link to={routes.home} className={cx("logo-link")}>
+          <Link to={config.route.home} className={cx("logo-link")}>
             <img src={image.logo} alt="Tiktok" />
           </Link>
         </div>
